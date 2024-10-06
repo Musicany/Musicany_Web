@@ -14,13 +14,13 @@ const flexGenerator = ({ direction, align, justify }: PropsType) => `
 `;
 
 const flex = {
-  FLEX: flexGenerator({align: "none", justify: "none"}),
-  CENTER: flexGenerator({align: "center", justify: "center"}),
-  VERTICAL: flexGenerator({align: "center"}),
-  HORIZONTAL: flexGenerator({justify: "center"}),
-  START: flexGenerator({align: "center", justify: "flex-start"}),
-  BETWEEN: flexGenerator({align: "center", justify: "space-between"}),
-  END: flexGenerator({align: "center", justify: "flex-end"}),
+  FLEX: flexGenerator({ align: "none", justify: "none" }),
+  CENTER: flexGenerator({ align: "center", justify: "center" }),
+  VERTICAL: flexGenerator({ align: "center" }),
+  HORIZONTAL: flexGenerator({ justify: "center" }),
+  START: flexGenerator({ align: "center", justify: "flex-start" }),
+  BETWEEN: flexGenerator({ align: "center", justify: "space-between" }),
+  END: flexGenerator({ align: "center", justify: "flex-end" }),
 
   COLUMN_FLEX: flexGenerator({
     direction: "column",
@@ -32,8 +32,8 @@ const flex = {
     align: "center",
     justify: "center",
   }),
-  COLUMN_VERTICAL: flexGenerator({direction: "column", align: "center"}),
-  COLUMN_HORIZONTAL: flexGenerator({direction: "column", justify: "center"}),
+  COLUMN_VERTICAL: flexGenerator({ direction: "column", align: "center" }),
+  COLUMN_HORIZONTAL: flexGenerator({ direction: "column", justify: "center" }),
   COLUMN_START: flexGenerator({
     direction: "column",
     align: "center",

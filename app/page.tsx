@@ -1,7 +1,7 @@
-import Main from "@/pages/(main)/page";
+import { redirect } from "next/navigation";
 
 const Home = () => {
-  return <Main />;
+  redirect("/main");
 };
 
 export default Home;

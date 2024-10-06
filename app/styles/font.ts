@@ -10,7 +10,7 @@ const fontGenerator = (
   font-family: ${fontFamily};
 `;
 
-export const font = {
+const font = {
   BigTitle: fontGenerator(700, 2.438, 110, "Pretendard-Regular"),
   Title: fontGenerator(700, 1.938, 130, "Pretendard-Regular"),
   SmallTitle: fontGenerator(400, 1.563, 130, "Pretendard-Regular"),
@@ -19,3 +19,5 @@ export const font = {
   SmallText: fontGenerator(400, 0.813, 130, "Pretendard-Regular"),
   Caption: fontGenerator(400, 0.625, 130, "Pretendard-Regular"),
 };
+
+export default font;
