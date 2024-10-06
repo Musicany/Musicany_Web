@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { theme } from ".";
+import theme from "@/styles/theme";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -33,6 +33,9 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     background-color: ${theme.white};
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
 
   ul,

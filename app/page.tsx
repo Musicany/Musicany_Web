@@ -1,5 +1,7 @@
+import Main from "@/pages/(main)/page";
+
 const Home = () => {
-  return <div>ㅇㅏㄴ녕ㅎ사빈다ㅣ까</div>;
+  return <Main />;
 };
 
 export default Home;
