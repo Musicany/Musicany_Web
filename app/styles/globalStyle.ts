@@ -30,12 +30,15 @@ const GlobalStyle = createGlobalStyle`
       font-size: 50%;
     }
   }
-
-  body {
-    background-color: ${theme.white};
+  
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
+
+  body {
+    background-color: ${theme.white};
   }
 
   ul,
