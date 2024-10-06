@@ -6,7 +6,7 @@ export const Layout = styled.div`
   width: 100%;
   height: 68px;
   ${flex.BETWEEN};
-  position: relative;
+  position: sticky;
 `;
 export const LogoLayout = styled.div`
   margin-left: 7%;
