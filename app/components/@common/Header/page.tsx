@@ -1,23 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Logo from "@/assets/logo";
 import * as S from "./style";
 
 const Header = () => {
+  const router = useRouter();
   const navList = [
     { id: 1, title: "WorkSpace", navigate: "workspace" },
     { id: 2, title: "Guide", navigate: "guide" },
     { id: 3, title: "Sign In", navigate: "signin" },
-    { id: 4, title: "Sign Up", navigate: "signup" },
   ];
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <S.Layout>
-      <S.LogoLayout>
-        <Logo />
+      <S.LogoLayout onClick={() => router.push("/main")}>
+        <Logo theme="dark" />
       </S.LogoLayout>
       <S.MainNav>
         {navList.map((item) =>
@@ -36,7 +37,7 @@ const Header = () => {
       </S.MainNav>
       <S.LoginNav>
         {navList.map((item) =>
-          item.id >= 3 ? (
+          item.id === 3 ? (
             <S.NavItem
               key={item.id}
               $isHovered={hoveredIndex !== null && hoveredIndex !== item.id}

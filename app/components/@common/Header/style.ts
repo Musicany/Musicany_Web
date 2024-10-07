@@ -10,6 +10,7 @@ export const Layout = styled.div`
 `;
 export const LogoLayout = styled.div`
   margin-left: 7%;
+  cursor: pointer;
 `;
 export const LoginNav = styled.div`
   margin-right: 7%;
