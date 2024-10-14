@@ -46,7 +46,7 @@ const Header = () => {
             event.preventDefault(); // 기본 페이지 이동 막기
             signIn();
           }}
-          href={"/signin"}
+          href="/signin"
         >
           <S.NavText>Sign In</S.NavText>
         </S.NavItem>
