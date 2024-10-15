@@ -26,6 +26,7 @@ export const ContentLayout = styled.div`
 `;
 export const ContentHeader = styled.div`
   ${flex.FLEX};
+  justify-content: space-between;
   width: 100%;
 `;
 export const WorkTitle = styled.p`
