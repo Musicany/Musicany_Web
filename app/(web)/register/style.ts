@@ -20,7 +20,7 @@ export const FormLayout = styled.div`
     -12px 15px 42px 0 rgba(0, 0, 0, 0.1);
   border-radius: 12px;
 `;
-export const Form = styled.div`
+export const Form = styled.form`
   width: 100%;
   ${flex.COLUMN_FLEX};
   gap: 36px;
