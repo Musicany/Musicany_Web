@@ -48,18 +48,28 @@ const Header = () => {
             <S.NavText>{session.user?.name}님</S.NavText>
           </S.NavItem>
         ) : (
-          <S.NavItem
-            $isHovered={hoveredIndex !== null && hoveredIndex !== 3}
-            onMouseEnter={() => setHoveredIndex(3)}
-            onMouseLeave={() => setHoveredIndex(null)}
-            onClick={(event) => {
-              event.preventDefault();
-              signIn();
-            }}
-            href=""
-          >
-            <S.NavText>Sign In</S.NavText>
-          </S.NavItem>
+          <>
+            <S.NavItem
+              $isHovered={hoveredIndex !== null && hoveredIndex !== 3}
+              onMouseEnter={() => setHoveredIndex(3)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              onClick={(event) => {
+                event.preventDefault();
+                signIn();
+              }}
+              href=""
+            >
+              <S.NavText>Sign In</S.NavText>
+            </S.NavItem>
+            <S.NavItem
+              $isHovered={hoveredIndex !== null && hoveredIndex !== 4}
+              onMouseEnter={() => setHoveredIndex(4)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              href="/register"
+            >
+              <S.NavText>Sign Up</S.NavText>
+            </S.NavItem>
+          </>
         )}
       </S.LoginNav>
     </S.Layout>
