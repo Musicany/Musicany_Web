@@ -7,6 +7,7 @@ import PlusIcon from "@/assets/plusIcon";
 
 interface AddButtonProps {
   children: ReactNode;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const ButtonLayout = styled.button`
@@ -22,9 +23,9 @@ const ButtonLayout = styled.button`
   }
 `;
 
-const AddButton = ({ children }: AddButtonProps) => {
+const AddButton = ({ children, onClick }: AddButtonProps) => {
   return (
-    <ButtonLayout>
+    <ButtonLayout onClick={onClick}>
       <PlusIcon />
       {children}
     </ButtonLayout>
