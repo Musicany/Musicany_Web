@@ -21,10 +21,15 @@ const Register = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/api/auth/signup", formData);
-      console.log("회원가입 성공", response.data);
-    } catch (error) {
-      console.error("회원가입 실패", error);
+      await axios.post("/api/signup", formData);
+      setFormData({
+        name: "",
+        email: "",
+        password: "",
+      });
+      alert("정상적으로 가입되었습니다!");
+    } catch {
+      alert("가입에 실패하였습니다.");
     }
   };
 
@@ -32,8 +37,6 @@ const Register = () => {
     <S.Layout>
       <S.FormLayout>
         <S.Form onSubmit={handleSubmit}>
-          {" "}
-          {/* onSubmit 이벤트 핸들러 추가 */}
           <S.SignUpTitle>회원가입</S.SignUpTitle>
           <S.Inputs>
             <S.Input

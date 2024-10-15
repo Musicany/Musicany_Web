@@ -1,11 +1,12 @@
 import { MongoClient } from "mongodb";
 
+// MongoDB 연결 URL
 const url =
   "mongodb+srv://admin:c5752512@musicany.r4lll.mongodb.net/?retryWrites=true&w=majority&appName=Musicany";
 
 let connectDBPromise: Promise<MongoClient> | null = null;
 
-const connectDB = async () => {
+const connectDB = (async () => {
   if (!connectDBPromise) {
     if (process.env.NODE_ENV === "development") {
       if (!global.mongoClient) {
@@ -17,6 +18,6 @@ const connectDB = async () => {
     }
   }
   return connectDBPromise;
-};
+})();
 
 export { connectDB };
