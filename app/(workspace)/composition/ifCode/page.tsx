@@ -2,21 +2,17 @@
 
 import React from "react";
 
+import CompositionModal from "@/components/modals/compositionModal/page";
 import * as S from "./style";
 
 const IfCode = () => {
   return (
     <S.Layout>
-      <S.ChooseModal>
-        <S.ContentLayout>
-          <S.Title>이미 생각한 코드진행이 있으신가요?</S.Title>
-          <S.SelectLayout>
-            <S.Select>예</S.Select>
-            <S.Select>아니요</S.Select>
-          </S.SelectLayout>
-        </S.ContentLayout>
-        <S.FooterLine />
-      </S.ChooseModal>
+      <CompositionModal
+        type="choose"
+        title="이미 생각한 코드진행이 있으신가요?"
+        subTitle="코드가 이미 있으시다면 ‘예' 를 클릭해주세요"
+      />
     </S.Layout>
   );
 };
