@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/navigation";
 import * as S from "./style";
 
 // title과 subtitle을 추가한 인터페이스 정의
@@ -9,6 +10,7 @@ interface CompositionModalProps {
 }
 
 const CompositionModal = ({ type, title, subTitle }: CompositionModalProps) => {
+  const router = useRouter();
   return (
     <S.ChooseModal>
       <S.ContentLayout>
@@ -18,8 +20,12 @@ const CompositionModal = ({ type, title, subTitle }: CompositionModalProps) => {
         </S.TitleLayout>
         {type === "choose" ? (
           <S.SelectLayout>
-            <S.Select>예</S.Select>
-            <S.Select>아니요</S.Select>
+            <S.Select onClick={() => router.push("/composition/writeCode")}>
+              예
+            </S.Select>
+            <S.Select onClick={() => router.push("/composition/ai")}>
+              아니요
+            </S.Select>
           </S.SelectLayout>
         ) : (
           <S.Input placeholder="코드를 입력하세요" />
