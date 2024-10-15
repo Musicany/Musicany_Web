@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Logo from "@/assets/logo";
 import { signIn, signOut, useSession } from "next-auth/react";
@@ -10,6 +10,17 @@ const Header = () => {
   const router = useRouter();
   const { data: session } = useSession();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const handleWorkspaceClick = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+  ) => {
+    event.preventDefault();
+    if (!session) {
+      alert("로그인이 필요한 서비스입니다.");
+    } else {
+      router.push("/workspace");
+    }
+  };
 
   return (
     <S.Layout>
@@ -23,6 +34,7 @@ const Header = () => {
           onMouseEnter={() => setHoveredIndex(1)}
           onMouseLeave={() => setHoveredIndex(null)}
           href="workspace"
+          onClick={handleWorkspaceClick}
         >
           <S.NavText>WorkSpace</S.NavText>
         </S.NavItem>
