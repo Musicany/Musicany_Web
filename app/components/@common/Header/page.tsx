@@ -3,17 +3,12 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Logo from "@/assets/logo";
-import { signIn } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import * as S from "./style";
 
 const Header = () => {
   const router = useRouter();
-  const navList = [
-    { id: 1, title: "WorkSpace", navigate: "workspace" },
-    { id: 2, title: "Guide", navigate: "guide" },
-    { id: 3, title: "Sign In", navigate: "signin" },
-  ];
-
+  const { data: session } = useSession();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
@@ -21,35 +16,51 @@ const Header = () => {
       <S.LogoLayout onClick={() => router.push("/main")}>
         <Logo theme="dark" />
       </S.LogoLayout>
+
       <S.MainNav>
-        {navList.map((item) =>
-          item.id <= 2 ? (
-            <S.NavItem
-              key={item.id}
-              $isHovered={hoveredIndex !== null && hoveredIndex !== item.id}
-              onMouseEnter={() => setHoveredIndex(item.id)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              href={item.navigate}
-            >
-              <S.NavText>{item.title}</S.NavText>
-            </S.NavItem>
-          ) : null,
-        )}
-      </S.MainNav>
-      <S.LoginNav>
         <S.NavItem
-          key={3}
-          $isHovered={hoveredIndex !== null && hoveredIndex !== 3}
-          onMouseEnter={() => setHoveredIndex(3)}
+          $isHovered={hoveredIndex !== null && hoveredIndex !== 1}
+          onMouseEnter={() => setHoveredIndex(1)}
           onMouseLeave={() => setHoveredIndex(null)}
-          onClick={(event) => {
-            event.preventDefault(); // 기본 페이지 이동 막기
-            signIn();
-          }}
-          href=""
+          href="workspace"
         >
-          <S.NavText>Sign In</S.NavText>
+          <S.NavText>WorkSpace</S.NavText>
         </S.NavItem>
+        <S.NavItem
+          $isHovered={hoveredIndex !== null && hoveredIndex !== 2}
+          onMouseEnter={() => setHoveredIndex(2)}
+          onMouseLeave={() => setHoveredIndex(null)}
+          href="guide"
+        >
+          <S.NavText>Guide</S.NavText>
+        </S.NavItem>
+      </S.MainNav>
+
+      <S.LoginNav>
+        {session ? (
+          <S.NavItem
+            $isHovered={hoveredIndex !== null && hoveredIndex !== 3}
+            onMouseEnter={() => setHoveredIndex(3)}
+            onMouseLeave={() => setHoveredIndex(null)}
+            onClick={() => signOut()}
+            href="#"
+          >
+            <S.NavText>{session.user?.name}님</S.NavText>
+          </S.NavItem>
+        ) : (
+          <S.NavItem
+            $isHovered={hoveredIndex !== null && hoveredIndex !== 3}
+            onMouseEnter={() => setHoveredIndex(3)}
+            onMouseLeave={() => setHoveredIndex(null)}
+            onClick={(event) => {
+              event.preventDefault();
+              signIn();
+            }}
+            href=""
+          >
+            <S.NavText>Sign In</S.NavText>
+          </S.NavItem>
+        )}
       </S.LoginNav>
     </S.Layout>
   );
