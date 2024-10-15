@@ -5,6 +5,7 @@ export const Layout = styled.div`
   width: 100%;
   ${flex.COLUMN_CENTER};
   padding: 0 7%;
+  margin-bottom: 116px;
 `;
 export const MainText = styled.p`
   ${font.SmallTitle};
