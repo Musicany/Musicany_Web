@@ -2,9 +2,12 @@
 
 import React from "react";
 
+import AddButton from "@/components/buttons/addButton";
+import { useRouter } from "next/navigation";
 import * as S from "./style";
 
 const Workspace = () => {
+  const router = useRouter();
   return (
     <S.Layout>
       <S.SideLayout>
@@ -21,6 +24,9 @@ const Workspace = () => {
         <S.ContentLayout>
           <S.ContentHeader>
             <S.WorkTitle>Works</S.WorkTitle>
+            <AddButton onClick={() => router.push("/composition/ifCode")}>
+              Create
+            </AddButton>
           </S.ContentHeader>
           <S.Works>
             <S.Work>
