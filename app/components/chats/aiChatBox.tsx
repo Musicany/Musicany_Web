@@ -25,14 +25,16 @@ const MessageBox = styled.div`
 const Text = styled.pre`
   ${font.Text};
   color: ${theme.grey1000};
+  white-space: pre-wrap; /* 줄바꿈을 처리 */
+  word-wrap: break-word;
 `;
 
-interface ChatBoxProps {
+interface AiChatBoxProps {
   children?: React.ReactNode;
   name?: boolean;
 }
 
-const AiChatBox = ({ children, name }: ChatBoxProps) => {
+const AiChatBox = ({ children, name }: AiChatBoxProps) => {
   return (
     <Layout>
       {name && (
