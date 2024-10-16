@@ -27,7 +27,6 @@ export const StartComment = styled.p`
 export const ChatLayout = styled.div`
   width: 100%;
   ${flex.COLUMN_FLEX}
-  gap: 4px;
 `;
 export const InputLayout = styled.div`
   height: 11.5%;

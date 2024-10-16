@@ -6,8 +6,13 @@ import UserChatBox from "@/components/chats/userChatBox";
 import SendIcon from "@/assets/send";
 import * as S from "./style";
 
+interface Message {
+  text: string;
+  type: "ai" | "user";
+}
+
 const Chat = () => {
-  const [messages, setMessages] = useState<string[]>([]); // 메시지를 저장하는 상태
+  const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputText] = useState("");
 
   const chatEndRef = useRef<HTMLDivElement>(null);
@@ -20,7 +25,10 @@ const Chat = () => {
 
   const handleSendMessage = () => {
     if (inputText.trim()) {
-      setMessages((prevMessages) => [...prevMessages, inputText]);
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { text: inputText, type: "user" },
+      ]);
       setInputText("");
     }
   };
@@ -37,16 +45,23 @@ const Chat = () => {
         <S.MainLayout>
           <S.StartComment>Musicany AI가 실행되었습니다.</S.StartComment>
           <S.ChatLayout>
-            <AiChatBox name>안녕하세요! 곡 추천을 시작해드릴게요.</AiChatBox>
-            <AiChatBox>곡 분위기는 어떤 느낌을 원하세요?</AiChatBox>
-            <AiChatBox>
-              대표적인 예시로는 재즈, 블루스, POP, 발라드 등이 있어요.
-            </AiChatBox>
+            {messages.map((message, index) => {
+              const isDifferentType =
+                index === 0 || messages[index - 1].type !== message.type;
 
-            {messages.map((message) => (
-              <UserChatBox>{message}</UserChatBox>
-            ))}
-
+              return (
+                <div
+                  key={index}
+                  style={{ marginTop: isDifferentType ? "12px" : "4px" }}
+                >
+                  {message.type === "ai" ? (
+                    <AiChatBox>{message.text}</AiChatBox>
+                  ) : (
+                    <UserChatBox>{message.text}</UserChatBox>
+                  )}
+                </div>
+              );
+            })}
             <div ref={chatEndRef} />
           </S.ChatLayout>
         </S.MainLayout>
@@ -55,8 +70,8 @@ const Chat = () => {
             <S.Input
               placeholder="메시지 입력.."
               value={inputText}
-              onChange={(e) => setInputText(e.target.value)} // 입력된 값을 상태로 저장
-              onKeyPress={handleKeyPress} // Enter 키를 누르면 전송
+              onChange={(e) => setInputText(e.target.value)}
+              onKeyPress={handleKeyPress}
             />
             <S.SendIconLayout onClick={handleSendMessage}>
               <SendIcon />
