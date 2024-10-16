@@ -39,10 +39,7 @@ const Header = () => {
           $isHovered={hoveredIndex !== null && hoveredIndex !== 3}
           onMouseEnter={() => setHoveredIndex(3)}
           onMouseLeave={() => setHoveredIndex(null)}
-          onClick={(event) => {
-            event.preventDefault();
-          }}
-          href=""
+          href="signin"
         >
           <S.NavText>Sign In</S.NavText>
         </S.NavItem>
@@ -50,7 +47,7 @@ const Header = () => {
           $isHovered={hoveredIndex !== null && hoveredIndex !== 4}
           onMouseEnter={() => setHoveredIndex(4)}
           onMouseLeave={() => setHoveredIndex(null)}
-          href="/register"
+          href="/signup"
         >
           <S.NavText>Sign Up</S.NavText>
         </S.NavItem>

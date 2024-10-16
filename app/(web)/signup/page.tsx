@@ -5,7 +5,7 @@ import { customAxios } from "@/utils/axios/customAxios";
 import { useRouter } from "next/navigation";
 import * as S from "./style";
 
-const Register = () => {
+const SignUp = () => {
   const router = useRouter();
   const [signUpData, setSignUpData] = useState({
     name: "",
@@ -73,4 +73,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default SignUp;
