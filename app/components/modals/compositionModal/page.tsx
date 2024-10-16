@@ -1,8 +1,9 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import * as S from "./style";
 
-// title과 subtitle을 추가한 인터페이스 정의
 interface CompositionModalProps {
   type: "choose" | "write";
   title: string;
@@ -10,7 +11,19 @@ interface CompositionModalProps {
 }
 
 const CompositionModal = ({ type, title, subTitle }: CompositionModalProps) => {
+  const [inputText, setInputText] = useState("");
   const router = useRouter();
+
+  const activeEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      if (inputText.length > 0) {
+        router.push("/ai/chat");
+      } else {
+        alert("코드진행을 입력해주세요.");
+      }
+    }
+  };
+
   return (
     <S.ChooseModal>
       <S.ContentLayout>
@@ -28,7 +41,12 @@ const CompositionModal = ({ type, title, subTitle }: CompositionModalProps) => {
             </S.Select>
           </S.SelectLayout>
         ) : (
-          <S.Input placeholder="코드를 입력하세요" />
+          <S.Input
+            value={inputText}
+            placeholder="코드를 입력하세요"
+            onKeyDown={activeEnter}
+            onChange={(e) => setInputText(e.target.value)}
+          />
         )}
       </S.ContentLayout>
       <S.FooterLine />
