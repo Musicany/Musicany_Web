@@ -29,7 +29,7 @@ const SignUp = () => {
         password: "",
       });
       alert("정상적으로 가입되었습니다!");
-      await router.push("/singin");
+      router.push("/signin");
     } catch (err) {
       console.log(err);
       alert("가입에 실패하였습니다.");

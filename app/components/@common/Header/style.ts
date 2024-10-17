@@ -26,7 +26,7 @@ export const MainNav = styled.div`
   left: 50%;
   transform: translateX(-50%);
 `;
-export const NavItem = styled(Link)<{ $isHovered: boolean }>`
+export const NavItem = styled.button<{ $isHovered: boolean }>`
   ${font.Text};
   color: ${({ $isHovered }) =>
     $isHovered ? `${theme.grey500}` : `${theme.grey1000}`};
