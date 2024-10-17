@@ -32,7 +32,7 @@ const Workspace = () => {
         <S.ContentLayout>
           <S.ContentHeader>
             <S.WorkTitle>Works</S.WorkTitle>
-            <AddButton onClick={() => router.push("/composition/ifCode")}>
+            <AddButton onClick={() => router.push("/ai/chat")}>
               Create
             </AddButton>
           </S.ContentHeader>
