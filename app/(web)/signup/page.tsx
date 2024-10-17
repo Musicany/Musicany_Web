@@ -5,7 +5,7 @@ import { customAxios } from "@/utils/axios/customAxios";
 import { useRouter } from "next/navigation";
 import * as S from "./style";
 
-const Register = () => {
+const SignUp = () => {
   const router = useRouter();
   const [signUpData, setSignUpData] = useState({
     name: "",
@@ -29,7 +29,7 @@ const Register = () => {
         password: "",
       });
       alert("정상적으로 가입되었습니다!");
-      await router.push("/singin");
+      router.push("/signin");
     } catch (err) {
       console.log(err);
       alert("가입에 실패하였습니다.");
@@ -73,4 +73,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default SignUp;
